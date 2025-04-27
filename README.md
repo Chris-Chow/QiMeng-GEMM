@@ -7,7 +7,7 @@ QiMeng-GEMM is an innovative approach to automatically generate high-performance
 To test the performance of cuda code, you can run this:
 ```bash
 cd code/cuda
-nvcc -o test main.cpp kernel_128_128.cu kernel_32_64.cu kernel_64_128.cu kernel_64_64.cu kernel.cu  -lcublas
+make
 ./test [M] [N] [K]
 ```
 
