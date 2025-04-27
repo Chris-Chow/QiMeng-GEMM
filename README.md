@@ -1,14 +1,20 @@
 # QiMeng-GEMM: Automatically Generating High-Performance Matrix Multiplication Code by Exploiting Large Language Models
-
-<img src="static/overview.png" style="zoom:50%;" /> 
+QiMeng-GEMM is an innovative approach to automatically generate high-performance matrix multiplication (GEMM) code using large language models (LLMs). This codebase provides a comprehensive solution for efficiently computing matrix multiplications, leveraging the power of LLMs to generate optimized code based on user inputs.
+<img src="static/images/overview.png" style="zoom:50%;" /> 
 
 ## Quick Start
 ### CUDA
-Use this to call the GEMM cuda kernel
+
+To test the performance of cuda code, you can run this:
+```bash
+cd code/cuda
+nvcc -o test main.cpp kernel_128_128.cu kernel_32_64.cu kernel_64_128.cu kernel_64_64.cu kernel.cu  -lcublas
+./test [M] [N] [K]
+```
+
+You can use this to call the GEMM cuda kernel
 ```cpp
-...
 cuda_gemm(M, N, K, alpha, d_A, d_B, beta, d_C);  
-...
 ```
 
 ## Paper

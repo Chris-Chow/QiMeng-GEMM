@@ -3,20 +3,20 @@
 
 // CUDA runtime
 #include <cuda_runtime.h>
-#include "cuda.cuh"
+#include "cuda_kernel.cuh"
 
-#define CEIL_DIV(M, N) ((M + N -1) / N)
+#define CEIL_DIV(M, N) (((M) + (N)-1) / (N))
 
-void cuda_gemm_64_128(int M, int N, int K, float alpha, float *A, float *B,
+void kernel_32_64(int M, int N, int K, float alpha, float *A, float *B,
                  float beta, float *C) {
-    static const int BM = 64;
-    static const int BN = 128;
+    static const int BM = 32;
+    static const int BN = 64;
     static const int BK = 16;
-    static const int WM = 32;
-    static const int WN = 64;
-    static const int WMITER = 16;
+    static const int WM = 16;
+    static const int WN = 32;
+    static const int WMITER = 8;
     static const int WNITER = 32;
-    static const int TM = 4;
+    static const int TM = 2;
     static const int TN = 4;
 
     dim3 threadsPerBlock((BM*BN)/(WM*WN)*32);

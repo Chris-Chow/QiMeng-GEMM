@@ -3,17 +3,17 @@
 
 // CUDA runtime
 #include <cuda_runtime.h>
-#include "cuda.cuh"
+#include "cuda_kernel.cuh"
 
-#define CEIL_DIV(M, N) (((M) + (N)-1) / (N))
+#define CEIL_DIV(M, N) ((M + N -1) / N)
 
-void cuda_gemm_128_128(int M, int N, int K, float alpha, float *A, float *B,
+void kernel_64_128(int M, int N, int K, float alpha, float *A, float *B,
                  float beta, float *C) {
-    static const int BM = 128;
+    static const int BM = 64;
     static const int BN = 128;
-    static const int BK = 8;
-    static const int WM = 64;
-    static const int WN = 32;
+    static const int BK = 16;
+    static const int WM = 32;
+    static const int WN = 64;
     static const int WMITER = 16;
     static const int WNITER = 32;
     static const int TM = 4;
