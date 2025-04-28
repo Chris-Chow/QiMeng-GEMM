@@ -41,7 +41,7 @@ In the Makefile, use `PLATFORM` to specify the RISC-V platform, and then select 
 
 
 ## Paper
-This paper has beed accepted by AAAI2025 poster.
+This paper has beed published on AAAI2025.
 
 Please cite this paper if you use this code.
 
